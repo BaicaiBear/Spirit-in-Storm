@@ -1,4 +1,4 @@
-<a title="MirrorTree Wiki" href="https://wiki.mirror.bearcabbage.top/"><img alt="MirrorTree logo" align="right" height="168" src="/asset/images/logo.svg" width="168"/></a>
+<a title="MirrorTree Wiki" href="https://wiki.mirror.bearcabbage.top/"><img alt="MirrorTree logo" align="right" height="168" src="/logo.png" width="168"/></a>
 
 # Spirit-in-Storm
 
