@@ -36,7 +36,7 @@ public abstract class ServerPlayerMixin extends PlayerEntity implements SiSPlaye
 		if (!exploredSpirits.containsKey(type)) exploredSpirits.put(type, new java.util.HashSet<>());
 		exploredSpirits.get(type).add(key);
 		Player.Config lanternData = new Player.Config(PlayerDataApi.getPathFor((ServerPlayerEntity)((PlayerEntity)this)).resolve("explored_spirits.json"));
-		lanternData.set(Types.FOOD, exploredSpirits.get(Types.FOOD));
+		lanternData.set(type, exploredSpirits.get(type));
 		lanternData.save();
 	}
 
@@ -46,10 +46,12 @@ public abstract class ServerPlayerMixin extends PlayerEntity implements SiSPlaye
 		if (lanternData == null) {
 			LanternInStorm.LOGGER.warn("No Explored Spirit Data, generating blank format...");
 			lanternData.set(Types.FOOD, new HashSet<>());
+			lanternData.set(Types.ADVANCEMENT, new HashSet<>());
 			lanternData.save();
 		}
 		exploredSpirits.clear();
 		exploredSpirits.put(Types.FOOD, lanternData.get(Types.FOOD, Set.class) == null ? new HashSet<>() : lanternData.get(Types.FOOD, Set.class));
+		exploredSpirits.put(Types.ADVANCEMENT, lanternData.get(Types.ADVANCEMENT, Set.class) == null ? new HashSet<>() : lanternData.get(Types.ADVANCEMENT, Set.class));
 	}
 
 

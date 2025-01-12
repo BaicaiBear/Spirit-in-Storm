@@ -5,6 +5,7 @@
   "mixins": [
     "CakeBlockMixin",
     "FarmersDelightPieBlockMixin",
+    "PlayerAdvancementTrackerMixin",
     "PlayerEntityMixin",
     "ServerPlayerMixin"
   ],

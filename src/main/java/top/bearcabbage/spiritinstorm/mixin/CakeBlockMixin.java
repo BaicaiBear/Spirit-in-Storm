@@ -12,6 +12,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.bearcabbage.spiritinstorm.SpiritInStorm;
+import top.bearcabbage.spiritinstorm.SpiritInStormConstant;
 
 @Mixin(CakeBlock.class)
 public abstract class CakeBlockMixin extends Block {
@@ -21,6 +22,6 @@ public abstract class CakeBlockMixin extends Block {
 
     @Inject(method = "tryEat", at = @At(value = "RETURN", ordinal = 1))
     private static void tryEat(WorldAccess world, BlockPos pos, BlockState state, PlayerEntity player, CallbackInfoReturnable<ActionResult> cir) {
-        SpiritInStorm.Handlers.food(player, state.getBlock().asItem());
+        SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.FOOD, player, state.getBlock().asItem().toString(), 1);
     }
 }
