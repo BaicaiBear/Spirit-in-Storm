@@ -31,6 +31,8 @@ repositories {
 			excludeGroup "io.github.fabricators_of_create"
 		}
 	}
+	// Player Data API
+	maven { url 'https://maven.nucleoid.xyz' }
 }
 
 loom {
@@ -64,6 +66,9 @@ dependencies {
 	modImplementation("vectorwing:FarmersDelight:${fdrf_version}") {
 		exclude(group: "net.fabricmc")
 	}
+
+	//Player Data API
+	modImplementation include("eu.pb4:player-data-api:0.6.0+1.21")
 
 	modImplementation fileTree("libs")
 }

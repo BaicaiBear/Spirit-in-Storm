@@ -26,19 +26,15 @@
 		]
 	},
 	"mixins": [
-		"spirit-in-storm.mixins.json",
-		{
-			"config": "spirit-in-storm.client.mixins.json",
-			"environment": "client"
-		}
+		"spirit-in-storm.mixins.json"
 	],
 	"depends": {
 		"fabricloader": ">=0.16.10",
 		"minecraft": "~1.21.1",
 		"java": ">=21",
 		"fabric-api": "*",
-		"lantern-in-storm": ">=1.0.2",
-		"farmersdelight": "${fdrf_version}"
+		"lantern-in-storm": ">=0.1.2",
+		"farmersdelight": "1.21-2.1.6+refabricated"
 	},
 	"suggests": {
 		"another-mod": "*"
