@@ -1,11 +1,14 @@
 {
-	"required": true,
-	"package": "top.bearcabbage.spiritinstorm.mixin",
-	"compatibilityLevel": "JAVA_21",
-	"mixins": [
-		"ServerPlayerMixin"
-	],
-	"injectors": {
-		"defaultRequire": 1
+  "required": true,
+  "package": "top.bearcabbage.spiritinstorm.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "CakeBlockMixin",
+    "FarmersDelightPieBlockMixin",
+    "PlayerEntityMixin",
+    "ServerPlayerMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
 	}
 }
