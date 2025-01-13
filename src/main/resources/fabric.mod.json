@@ -18,9 +18,6 @@
 		"main": [
 			"top.bearcabbage.spiritinstorm.SpiritInStorm"
 		],
-		"client": [
-			"top.bearcabbage.spiritinstorm.SpiritInStormClient"
-		],
 		"fabric-datagen": [
 			"top.bearcabbage.spiritinstorm.SpiritInStormDataGenerator"
 		]

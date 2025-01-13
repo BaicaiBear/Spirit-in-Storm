@@ -7,7 +7,6 @@
     "CakeBlockMixin",
     "FarmersDelightPieBlockMixin",
     "PlayerAdvancementTrackerMixin",
-    "PlayerEntityMixin",
     "ServerPlayerMixin"
   ],
   "injectors": {

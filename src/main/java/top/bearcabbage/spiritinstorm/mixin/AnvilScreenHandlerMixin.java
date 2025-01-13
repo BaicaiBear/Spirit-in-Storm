@@ -29,9 +29,8 @@ public abstract class AnvilScreenHandlerMixin extends ForgingScreenHandler {
 
     @Inject(method = "onTakeOutput", at = @At("TAIL"))
     private void onTakeOutput(PlayerEntity player, ItemStack stack, CallbackInfo ci) {
-        if ((stack.isOf(Items.CARROT) || stack.isOf(Items.GOLDEN_CARROT)) && stack.getName().getLiteralString().contains("AC is watching you") && player instanceof ServerPlayerEntity serverPlayer && ((SiSPlayer)serverPlayer).isExplored(SpiritInStormConstant.Types.EASTEREGG, "AC is watching you")) {
+        if ((stack.isOf(Items.CARROT) || stack.isOf(Items.GOLDEN_CARROT)) && stack.getName().getLiteralString().contains("AC is watching you") && player instanceof ServerPlayerEntity serverPlayer) {
             SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.EASTEREGG, serverPlayer, "AC is watching you", 1);
-            ((SiSPlayer)serverPlayer).setExplored(SpiritInStormConstant.Types.EASTEREGG, "AC is watching you");
         }
     }
 

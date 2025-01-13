@@ -2,12 +2,12 @@ package top.bearcabbage.spiritinstorm.mixin;
 
 import com.mojang.authlib.GameProfile;
 import eu.pb4.playerdata.api.PlayerDataApi;
+import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.registry.entry.RegistryEntry;
+import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.Biome;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -61,13 +61,14 @@ public abstract class ServerPlayerMixin extends PlayerEntity implements SiSPlaye
 		exploredSpirits.put(SpiritInStormConstant.Types.EASTEREGG, lanternData.get(SpiritInStormConstant.Types.EASTEREGG, Set.class) == null ? new HashSet<>() : lanternData.get(SpiritInStormConstant.Types.EASTEREGG, Set.class));
 	}
 
+	public ItemStack eatFood(World world, ItemStack stack, FoodComponent foodComponent) {
+		SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.FOOD, this, stack.getItem().toString(), 1);
+		return super.eatFood(world, stack, foodComponent);
+	}
+
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void tick(CallbackInfo info) {
-		RegistryEntry<Biome> biome = this.getWorld().getBiome(this.getBlockPos());
-		if (!((SiSPlayer)this).isExplored(SpiritInStormConstant.Types.BIOME, biome.getIdAsString())) {
-			SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.BIOME, this, biome.getIdAsString(), 1);
-			((SiSPlayer)this).setExplored(SpiritInStormConstant.Types.BIOME, biome.getIdAsString());
-		}
+		SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.BIOME, this, this.getWorld().getBiome(this.getBlockPos()).getIdAsString(), 1);
 	}
 
 }
