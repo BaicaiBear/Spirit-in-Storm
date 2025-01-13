@@ -21,12 +21,12 @@ public class PlayerAdvancementTrackerMixin {
     private void onGrantCriterion(AdvancementEntry advancement, String criterionName, CallbackInfoReturnable<Boolean> cir) {
         if (advancement.id().getNamespace().equals("minecraft")
                 && advancement.id().getPath().contains("story/") || advancement.id().getPath().contains("nether/") || advancement.id().getPath().contains("end/") || advancement.id().getPath().contains("adventure/") || advancement.id().getPath().contains("husbandry/")) {
-            if (advancement.value().display().get().getFrame().equals(AdvancementFrame.TASK)) {
+//            if (advancement.value().display().get().getFrame().equals(AdvancementFrame.TASK)) {
+//                SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.ADVANCEMENT, this.owner, advancement.toString(), 1);
+            if (advancement.value().display().get().getFrame().equals(AdvancementFrame.GOAL)) {
                 SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.ADVANCEMENT, this.owner, advancement.toString(), 1);
-            } else if (advancement.value().display().get().getFrame().equals(AdvancementFrame.GOAL)) {
-                SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.ADVANCEMENT, this.owner, advancement.toString(), 2);
             } else if (advancement.value().display().get().getFrame().equals(AdvancementFrame.CHALLENGE)) {
-                SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.ADVANCEMENT, this.owner, advancement.toString(), 3);
+                SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.ADVANCEMENT, this.owner, advancement.toString(), 5);
             }
         }
     }
