@@ -51,14 +51,15 @@ public abstract class ServerPlayerMixin extends PlayerEntity implements SiSPlaye
 			lanternData.set(SpiritInStormConstant.Types.FOOD, new HashSet<>());
 			lanternData.set(SpiritInStormConstant.Types.ADVANCEMENT, new HashSet<>());
 			lanternData.set(SpiritInStormConstant.Types.BIOME, new HashSet<>());
+			lanternData.set(SpiritInStormConstant.Types.EASTEREGG, new HashSet<>());
 			lanternData.save();
 		}
 		exploredSpirits.clear();
 		exploredSpirits.put(SpiritInStormConstant.Types.FOOD, lanternData.get(SpiritInStormConstant.Types.FOOD, Set.class) == null ? new HashSet<>() : lanternData.get(SpiritInStormConstant.Types.FOOD, Set.class));
 		exploredSpirits.put(SpiritInStormConstant.Types.ADVANCEMENT, lanternData.get(SpiritInStormConstant.Types.ADVANCEMENT, Set.class) == null ? new HashSet<>() : lanternData.get(SpiritInStormConstant.Types.ADVANCEMENT, Set.class));
 		exploredSpirits.put(SpiritInStormConstant.Types.BIOME, lanternData.get(SpiritInStormConstant.Types.BIOME, Set.class) == null ? new HashSet<>() : lanternData.get(SpiritInStormConstant.Types.BIOME, Set.class));
+		exploredSpirits.put(SpiritInStormConstant.Types.EASTEREGG, lanternData.get(SpiritInStormConstant.Types.EASTEREGG, Set.class) == null ? new HashSet<>() : lanternData.get(SpiritInStormConstant.Types.EASTEREGG, Set.class));
 	}
-
 
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void tick(CallbackInfo info) {

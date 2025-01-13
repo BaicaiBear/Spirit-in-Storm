@@ -3,6 +3,7 @@
   "package": "top.bearcabbage.spiritinstorm.mixin",
   "compatibilityLevel": "JAVA_21",
   "mixins": [
+    "AnvilScreenHandlerMixin",
     "CakeBlockMixin",
     "FarmersDelightPieBlockMixin",
     "PlayerAdvancementTrackerMixin",

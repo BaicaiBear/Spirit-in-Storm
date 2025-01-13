@@ -12,6 +12,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import top.bearcabbage.spiritinstorm.SpiritInStorm;
 import top.bearcabbage.spiritinstorm.SpiritInStormConstant;
 
+import static top.bearcabbage.spiritinstorm.SpiritInStorm.MOD_ID;
+
 @Mixin(PlayerAdvancementTracker.class)
 public class PlayerAdvancementTrackerMixin {
 
@@ -28,6 +30,10 @@ public class PlayerAdvancementTrackerMixin {
             } else if (advancement.value().display().get().getFrame().equals(AdvancementFrame.CHALLENGE)) {
                 SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.ADVANCEMENT, this.owner, advancement.toString(), 5);
             }
+        }
+        else if (advancement.id().getNamespace().equals(MOD_ID)
+                && advancement.id().getPath().contains("egg/")) {
+            SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.EASTEREGG, this.owner, advancement.toString(), 1);
         }
     }
 }
