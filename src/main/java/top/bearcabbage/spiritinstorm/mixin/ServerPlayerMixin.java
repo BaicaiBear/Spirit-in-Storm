@@ -6,9 +6,12 @@ import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.server.network.ServerPlayerEntity;
+import net.minecraft.server.world.ServerWorld;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,6 +28,8 @@ import java.util.Set;
 
 @Mixin(ServerPlayerEntity.class)
 public abstract class ServerPlayerMixin extends PlayerEntity implements SiSPlayer {
+	@Shadow public abstract ServerWorld getServerWorld();
+
 	@Unique private final Map<String, Set<String>> exploredSpirits = new java.util.HashMap<>();
 
 	public ServerPlayerMixin(World world, BlockPos pos, float yaw, GameProfile gameProfile) {
@@ -68,7 +73,7 @@ public abstract class ServerPlayerMixin extends PlayerEntity implements SiSPlaye
 
 	@Inject(method = "tick", at = @At("TAIL"))
 	private void tick(CallbackInfo info) {
-		SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.BIOME, this, this.getWorld().getBiome(this.getBlockPos()).getIdAsString(), 1);
+		if(!getServerWorld().getRegistryKey().getValue().equals(Identifier.of("mirrortree","bedroom"))) SpiritInStorm.Handlers.handler(SpiritInStormConstant.Types.BIOME, this, this.getWorld().getBiome(this.getBlockPos()).getIdAsString(), 1);
 	}
 
 }
