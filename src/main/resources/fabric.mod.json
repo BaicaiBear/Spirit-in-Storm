@@ -31,7 +31,6 @@
 		"java": ">=21",
 		"fabric-api": "*",
 		"lantern-in-storm": ">=0.1.2",
-		"farmersdelight": ">=1.21.1-2.2.8+refabricated"
 	},
 	"suggests": {
 		"another-mod": "*"
