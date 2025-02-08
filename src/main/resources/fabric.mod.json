@@ -30,7 +30,7 @@
 		"minecraft": "~1.21.1",
 		"java": ">=21",
 		"fabric-api": "*",
-		"lantern-in-storm": ">=0.1.2",
+		"lantern-in-storm": ">=0.1.2"
 	},
 	"suggests": {
 		"another-mod": "*"
